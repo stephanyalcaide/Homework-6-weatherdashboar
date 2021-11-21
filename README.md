@@ -1,1 +1,5 @@
-# Homework-6-weatherdashboar![Screen Shot 2021-11-12 at 9 15 52 AM](https://user-images.githubusercontent.com/81532183/141489867-23f710ad-1d62-4f09-89da-d450b244fd07.png)
+Weather dashboard
+look for your town
+![Screen Shot 2021-11-20 at 7 06 51 PM](https://user-images.githubusercontent.com/81532183/142745528-8f60427a-d3eb-4cec-aab9-b9f268d4a108.png)
+
+updated the problems with deleting spacing from javascript and updated some html
