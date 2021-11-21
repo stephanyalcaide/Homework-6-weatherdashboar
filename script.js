@@ -22,19 +22,13 @@ var key = "fc8bffadcdca6a94d021c093eac22797";
 //Calling function init();
 init();
 
-//Function init();
-function init(){
-    //Get stored cities from localStorage
-    //Parsing the JSON string to an object
-    var storedCities = JSON.parse(localStorage.getItem("cities"));
 
-    // If cities were retrieved from localStorage, update the cities array to it
+function init(){
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
     if (storedCities !== null) {
         cities = storedCities;
       }
-    // Render cities to the DOM
     renderCities();
-    // console.log(cities);
 }
 
 //Function StoreCities()
@@ -78,30 +72,23 @@ function renderCities() {
     // This line will grab the town from the input box
     var town = $("#town-input").val().trim();
     
-    // Return from function early if submitted town is blank
     if (town === "") {
         return;
     }
     //Adding town-input to the town array
     cities.push(town);
-    // Store updated cities in localStorage, re-render the list
   storeCities();
   renderCities();
   });
-
-  //Function get Response Weather 
   
   function getResponseWeather(townName){
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +townName+ "&appid=" + key; 
-
-    //Clear content of todia -weather
     $("#todia -weather").empty();
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-        
-      // Create a new table row element
+        // town title funxction
       townTitle = $("<h3>").text(response.name + " "+ Formatdia ());
       $("#todia -weather").append(townTitle);
       var TempetureToNum = parseInt((response.main.temp)* 9/5 - 459);
@@ -114,7 +101,6 @@ function renderCities() {
       var CoordLon = response.coord.lon;
       var CoordLat = response.coord.lat;
     
-        //Api to get UV index
         var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?appid="+ key+ "&lat=" + CoordLat +"&lon=" + CoordLon;
         $.ajax({
             url: queryURL2,
@@ -142,7 +128,7 @@ function renderCities() {
             }
         });
     
-        //Api to get 5-dia  forecast  
+        //Api to get 5-dia  forecast show five day forecast weather to help user plan ahead 
         var queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + townName + "&appid=" + key;
             $.ajax({
             url: queryURL3,
